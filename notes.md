@@ -1,5 +1,5 @@
-- [ ] Enemy spawn
+- [x] Enemy spawn
+- [x] Timer/score
 - [ ] Endless tilemap
-- [ ] Timer/score
 - [ ] Death
 - [ ] Endgame scene

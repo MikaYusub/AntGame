@@ -4,9 +4,13 @@ extends Node2D
 @onready var staminaBar = $CanvasLayer/StaminaBar
 @onready var player = $Player
 @onready var enemy_scene = preload("res://Scenes/Enemy/Enemy.tscn")
+@onready var time = $CanvasLayer/Score
+@onready var timer = $Timer
 
 @export var enemy_speed: float = 500
 @export var enemy_scale: float = 3
+@export var enemy_acceleration: float = 10
+@export var enemy_timer_decay: float = 0.01
 
 func _ready():
     Signals.connect("player_health_changed", Callable(self, "_on_player_health_changed"))
@@ -16,6 +20,11 @@ func _ready():
     staminaBar.max_value = player.max_stamina
     staminaBar.value = staminaBar.max_value
 
+func _process(delta):
+    time.text = "Score: " + str(Time.get_ticks_msec() / 1000.0)
+
+    enemy_speed += enemy_acceleration * delta
+    timer.wait_time -= enemy_timer_decay * delta
 
 #test spawn enemy button for development
 func _on_button_pressed():

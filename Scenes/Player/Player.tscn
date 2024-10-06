@@ -41,7 +41,7 @@ shape = SubResource("CapsuleShape2D_8cd3c")
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_c2kbg")
 autoplay = "default"
-frame_progress = 0.715123
+frame_progress = 0.52349
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
 process_callback = 0

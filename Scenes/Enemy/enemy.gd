@@ -10,19 +10,23 @@ var speed: float = 500
 var damage: float = 10
 @onready var viewport_rect = get_viewport_rect()
 
+var shown_on_vp = false
+
 func _ready():
 	randomize()
-	# camera.make_current()
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	var direction = start_point.direction_to(end_point)
 
-	if position.distance_to(end_point) > 1:
-		position += direction * speed * _delta
-	else:
-		position = end_point
-		queue_free()
+	position += direction * speed * delta
 
+	var vp = get_camera_rect().grow(100)
+
+	if (!vp.intersects(Rect2(position, Vector2(1, 1)))) and shown_on_vp:
+		queue_free()
+	
+	shown_on_vp = vp.intersects(Rect2(position, Vector2(1, 1)))
+ 
 
 func get_camera_rect() -> Rect2:
 	var pos = camera.get_target_position() # Camera's center
@@ -35,9 +39,6 @@ func spawn_enemy():
 	choose_random_points(get_camera_rect())
 	position = start_point
 	rotation = start_point.angle_to_point(end_point) + PI / 2
-
-	# choose_random_points(viewport_rect)
-	# queue_redraw()
 
 func choose_random_points(play_area: Rect2):
 	start_point = get_random_point_outside_viewport(play_area)
