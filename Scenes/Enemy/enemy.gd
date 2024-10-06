@@ -79,4 +79,3 @@ func rand_range(min_val: float, max_val: float) -> float:
 
 func _on_area_2d_body_entered(_body: Node2D):
 	Signals.emit_signal("enemy_attack", damage)
-	print("Enemy collided with: ", _body)

@@ -66,8 +66,6 @@ func move_state():
 		run_speed = 1
 
 func _on_damage_received(enemy_damage):
-	print("Player received damage: ", enemy_damage)
-	
 	health -= enemy_damage
 	
 	if health <= 0:

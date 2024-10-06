@@ -7,6 +7,7 @@ extends Node2D
 @onready var time = $CanvasLayer/Score
 @onready var timer = $Timer
 
+
 @export var enemy_speed: float = 500
 @export var enemy_scale: float = 3
 @export var enemy_acceleration: float = 10
@@ -36,7 +37,6 @@ func _on_button_pressed():
 
 
 func _on_player_health_changed(new_health):
-    print("Player health changed: ", new_health)
     healthBar.value = new_health
 
 
