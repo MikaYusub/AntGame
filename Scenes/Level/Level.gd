@@ -10,6 +10,7 @@ extends Node2D
 
 @export var enemy_speed: float = 500
 @export var enemy_scale: float = 3
+@export var enemy_scale_addition: float = 0.01
 @export var enemy_acceleration: float = 10
 @export var enemy_timer_decay: float = 0.01
 
@@ -25,6 +26,7 @@ func _process(delta):
     time.text = "Score: " + str(Time.get_ticks_msec() / 1000.0)
 
     enemy_speed += enemy_acceleration * delta
+    enemy_scale += enemy_scale_addition * delta
     timer.wait_time -= enemy_timer_decay * delta
 
 #test spawn enemy button for development

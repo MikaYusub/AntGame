@@ -1,5 +1,10 @@
 - [x] Enemy spawn
 - [x] Timer/score
 - [ ] Endless tilemap
-- [ ] Death
+- [X] Death
 - [ ] Endgame scene
+- [ ] Main Menu
+- [ ] Add consumable sugar (hp regen)
+- [ ] Stamina usage and regen
+- [ ] Upgrade window every 30 sec
+- [ ] Damage taken number pop up and screen red

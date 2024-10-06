@@ -33,12 +33,34 @@ func _physics_process(_delta):
 		MOVE:
 			move_state()
 		DAMAGE:
-			# logic here
-			state = MOVE
+			handle_damage_state()
+		DEATH:
+			handle_death_state()
 
 	move_and_slide()
 
+
+func handle_damage_state():
+	if state != DAMAGE:
+		return
+	velocity = Vector2.ZERO
+	move_and_slide()  # Apply zero velocity immediately
+	anim.play("damage_taken")
+	await anim.animation_finished
+	state = MOVE
+
+func handle_death_state():
+	if state != DEATH:
+		return
+	velocity = Vector2.ZERO
+	move_and_slide()  # Apply zero velocity immediately
+
+	anim.play("death")
+	await anim.animation_finished
+	queue_free()
+
 func move_state():
+	anim.play("jetpack")
 	velocity = Vector2.ZERO
 
 	if Input.is_action_pressed("right"):
@@ -75,3 +97,4 @@ func _on_damage_received(enemy_damage):
 		state = DAMAGE
 
 	Signals.emit_signal("player_health_changed", health)
+	velocity = Vector2.ZERO

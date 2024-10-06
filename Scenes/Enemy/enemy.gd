@@ -38,7 +38,7 @@ func get_camera_rect() -> Rect2:
 func spawn_enemy():
 	choose_random_points(get_camera_rect())
 	position = start_point
-	rotation = start_point.angle_to_point(end_point) + PI / 2
+	rotation = start_point.angle_to_point(end_point) - PI / 2
 
 func choose_random_points(play_area: Rect2):
 	start_point = get_random_point_outside_viewport(play_area)
