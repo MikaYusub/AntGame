@@ -193,7 +193,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bp5rk"]
-size = Vector2(32, 6.25)
+size = Vector2(24, 3.125)
 
 [node name="Enemy" type="Node2D"]
 script = ExtResource("1_bq5pd")

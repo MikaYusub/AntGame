@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 Signals="*res://signals.gd"
-WorldSave="*res://WorldSave.gd"
 
 [input]
 

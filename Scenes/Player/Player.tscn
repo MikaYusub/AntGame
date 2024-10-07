@@ -359,7 +359,6 @@ collision_mask = 2
 script = ExtResource("1_v0yc1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-rotation = -1.5708
 shape = SubResource("CapsuleShape2D_8cd3c")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

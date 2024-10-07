@@ -1,6 +1,6 @@
 - [x] Enemy spawn
 - [x] Timer/score
-- [ ] Endless tilemap
+- [x] Endless tilemap - just made huge tilemap/not worth the time
 - [X] Death
 - [ ] Endgame scene
 - [ ] Main Menu
