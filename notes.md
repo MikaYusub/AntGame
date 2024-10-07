@@ -2,8 +2,8 @@
 - [x] Timer/score
 - [x] Endless tilemap - just made huge tilemap/not worth the time
 - [X] Death
-- [ ] Endgame scene
-- [ ] Main Menu
+- [x] Endgame scene
+- [x] Main Menu
 - [ ] Add consumable sugar (hp regen)
 - [ ] Stamina usage and regen
 - [ ] Upgrade window every 30 sec
