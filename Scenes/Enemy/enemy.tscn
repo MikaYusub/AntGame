@@ -1,8 +1,9 @@
-[gd_scene load_steps=31 format=3 uid="uid://l3bexadbu8gp"]
+[gd_scene load_steps=32 format=3 uid="uid://l3bexadbu8gp"]
 
 [ext_resource type="Script" path="res://Scenes/Enemy/enemy.gd" id="1_bq5pd"]
 [ext_resource type="Texture2D" uid="uid://d1rwu2s1ao0if" path="res://Assets/Enemy/vacuum_cleaner.png" id="2_krls7"]
 [ext_resource type="Texture2D" uid="uid://cop8h447theas" path="res://Assets/Enemy/lapisos.png" id="3_oerm5"]
+[ext_resource type="AudioStream" uid="uid://bnc8kwherk1we" path="res://Assets/Enemy/vacuum_cleaner.mp3" id="4_kbvmh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ix14y"]
 atlas = ExtResource("2_krls7")
@@ -210,5 +211,9 @@ frame_progress = 0.696064
 [node name="Head_of_vacuum" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 16)
 shape = SubResource("RectangleShape2D_bp5rk")
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_kbvmh")
+autoplay = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

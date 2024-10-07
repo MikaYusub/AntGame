@@ -4,7 +4,8 @@
 - [X] Death
 - [x] Endgame scene
 - [x] Main Menu
+- [x] Stamina usage and regen
+- [x] Add audio effect to vacuum cleaner
 - [ ] Add consumable sugar (hp regen)
-- [ ] Stamina usage and regen
 - [ ] Upgrade window every 30 sec
 - [ ] Damage taken number pop up and screen red

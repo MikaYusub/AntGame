@@ -97,7 +97,8 @@ func move_state():
 		stamina -= 1
 	else:
 		run_speed = 1
-		stamina += 1
+		if stamina < max_stamina:
+			stamina += 1
 
 	Signals.emit_signal("player_stamina_changed", stamina)
 
