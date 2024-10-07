@@ -10,11 +10,12 @@ extends Node2D
 @onready var gameOverMenu = $GameOverMenu
 @onready var gameOverScoreLabel = $GameOverMenu/CenterContainer/VBoxContainer/ScoreLabel
 
-@export var enemy_speed: float = 500
+var enemy_speed: float = SharedVariables.enemy_speed
+var enemy_acceleration: float = SharedVariables.enemy_acceleration
+var enemy_scale_addition: float = SharedVariables.enemy_scale_addition
+var enemy_timer_decay: float = SharedVariables.enemy_timer_decay
+
 @export var enemy_scale: float = 3
-@export var enemy_scale_addition: float = 0.01
-@export var enemy_acceleration: float = 10
-@export var enemy_timer_decay: float = 0.01
 
 var score: float = 0
 var start_time: int = 0

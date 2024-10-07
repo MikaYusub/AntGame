@@ -762,7 +762,6 @@ font_size = 32
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_8fc4u")
-enemy_speed = 750.0
 
 [node name="Map" type="Node2D" parent="."]
 

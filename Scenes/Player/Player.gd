@@ -10,9 +10,9 @@ enum {
 
 signal health_changed(new_health)
 
-@export var max_health = 120
-@export var max_stamina = 120
-@export var SPEED := 300.0
+var max_health = SharedVariables.player_health
+var max_stamina = SharedVariables.player_stamina
+var SPEED := SharedVariables.player_speed
 
 var health
 var stamina

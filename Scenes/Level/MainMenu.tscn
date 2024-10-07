@@ -61,15 +61,35 @@ position = Vector2(905, 59)
 scale = Vector2(3.40844, 3.40844)
 sprite_frames = SubResource("SpriteFrames_p5dgy")
 autoplay = "default"
-frame_progress = 0.225842
+frame_progress = 0.362508
 
-[node name="Play" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="Play" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "PLAY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FlowContainer" type="HFlowContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="EasyButton" type="Button" parent="CenterContainer/VBoxContainer/FlowContainer"]
+layout_mode = 2
+text = "EASY"
+
+[node name="MediumButton" type="Button" parent="CenterContainer/VBoxContainer/FlowContainer"]
+layout_mode = 2
+text = "MEDIUM"
+
+[node name="HardButton" type="Button" parent="CenterContainer/VBoxContainer/FlowContainer"]
+layout_mode = 2
+text = "SUCTION"
 
 [node name="Exit" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "EXIT"
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/FlowContainer/EasyButton" to="." method="_on_easy_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/FlowContainer/MediumButton" to="." method="_on_medium_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/FlowContainer/HardButton" to="." method="_on_hard_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
