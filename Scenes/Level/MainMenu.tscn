@@ -56,12 +56,12 @@ label_settings = SubResource("LabelSettings_lg6d4")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="AnimatedSprite2D" parent="CenterContainer/VBoxContainer"]
+[node name="Ant" type="AnimatedSprite2D" parent="CenterContainer/VBoxContainer"]
 position = Vector2(905, 59)
 scale = Vector2(3.40844, 3.40844)
 sprite_frames = SubResource("SpriteFrames_p5dgy")
 autoplay = "default"
-frame_progress = 0.797086
+frame_progress = 0.225842
 
 [node name="Play" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
