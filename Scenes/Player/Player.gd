@@ -27,6 +27,7 @@ var run_speed = 1
 func _ready():
 	Signals.connect("enemy_attack", Callable(self, "_on_damage_received"))
 	health = max_health
+	stamina = max_stamina
 
 
 func _physics_process(_delta):
@@ -91,10 +92,15 @@ func move_state():
 	elif direction == 1:
 		anim.flip_h = true
 
-	if Input.is_action_pressed("sprint"):
+	if Input.is_action_pressed("sprint") and stamina > 0:
 		run_speed = 2
+		stamina -= 1
 	else:
 		run_speed = 1
+		stamina += 1
+
+	Signals.emit_signal("player_stamina_changed", stamina)
+
 
 func _on_damage_received(enemy_damage):
 	if health <= 0:

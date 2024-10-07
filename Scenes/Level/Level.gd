@@ -23,6 +23,7 @@ func _ready():
 	start_time = Time.get_ticks_msec()
 
 	Signals.connect("player_health_changed", Callable(self, "_on_player_health_changed"))
+	Signals.connect("player_stamina_changed", Callable(self, "_on_player_stamina_changed"))
 	healthBar.max_value = player.max_health
 	healthBar.value = healthBar.max_value
 
@@ -57,6 +58,11 @@ func _on_player_health_changed(new_health):
 		gameOverMenu.show()
 
 
+func _on_player_stamina_changed(new_stamina):
+	print("Stamina changed to: " + str(new_stamina))
+	staminaBar.value = new_stamina
+
+
 func _on_enemy_timeout():
 	var enemy_instance = enemy_scene.instantiate()
 	enemy_instance.speed = enemy_speed
@@ -71,6 +77,7 @@ func _on_restart_button_pressed():
 
 func _on_quit_button_pressed():
 	get_tree().quit()
+
 
 func _on_main_menu_button_pressed():
 	get_tree().change_scene_to_file("res://Scenes/Level/MainMenu.tscn")
