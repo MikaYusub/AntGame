@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="AntGame"
-run/main_scene="res://Scenes/Level/Level.tscn"
+run/main_scene="res://Scenes/Level/MainMenu.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 

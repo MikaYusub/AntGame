@@ -4,21 +4,22 @@ enum {
 	MOVE,
 	DAMAGE,
 	DEATH,
-	ACCELERATE
+	ACCELERATE,
+	DEAD
 }
 
 signal health_changed(new_health)
 
 var state = MOVE
 
-var max_health = 120
+@export var max_health = 120
 var health
 
-var max_stamina = 120
+@export var max_stamina = 120
 var stamina
 
 var run_speed = 1
-@onready var anim = $AnimatedSprite2D
+@onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 
 @export var SPEED := 300.0
 
@@ -36,6 +37,8 @@ func _physics_process(_delta):
 			handle_damage_state()
 		DEATH:
 			handle_death_state()
+		DEAD:
+			return
 
 	move_and_slide()
 
@@ -44,7 +47,7 @@ func handle_damage_state():
 	if state != DAMAGE:
 		return
 	velocity = Vector2.ZERO
-	move_and_slide()  # Apply zero velocity immediately
+	move_and_slide() # Apply zero velocity immediately
 	anim.play("damage_taken")
 	await anim.animation_finished
 	state = MOVE
@@ -52,12 +55,18 @@ func handle_damage_state():
 func handle_death_state():
 	if state != DEATH:
 		return
-	velocity = Vector2.ZERO
-	move_and_slide()  # Apply zero velocity immediately
 
+	velocity = Vector2.ZERO
+	move_and_slide() # Apply zero velocity immediately
+
+	anim.sprite_frames.set_animation_loop("death", false)
 	anim.play("death")
+	state = DEAD
+
 	await anim.animation_finished
-	queue_free()
+
+	anim.pause()
+	
 
 func move_state():
 	anim.play("jetpack")
@@ -88,6 +97,9 @@ func move_state():
 		run_speed = 1
 
 func _on_damage_received(enemy_damage):
+	if health <= 0:
+		return
+
 	health -= enemy_damage
 	
 	if health <= 0:

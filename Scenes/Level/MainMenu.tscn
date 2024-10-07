@@ -1,0 +1,75 @@
+[gd_scene load_steps=7 format=3 uid="uid://m6nhdkknehor"]
+
+[ext_resource type="Script" path="res://Scenes/Level/MainMenu.gd" id="1_gymm1"]
+[ext_resource type="Texture2D" uid="uid://bo0nv7hhvku48" path="res://Assets/Player/antAnimation.png" id="2_wkv31"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lg6d4"]
+font_size = 64
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wu2vk"]
+atlas = ExtResource("2_wkv31")
+region = Rect2(0, 0, 31, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7xi1"]
+atlas = ExtResource("2_wkv31")
+region = Rect2(31, 0, 31, 27)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p5dgy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wu2vk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f7xi1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gymm1")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_direction = 2
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Ant-traction: The Great Escape"
+label_settings = SubResource("LabelSettings_lg6d4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="AnimatedSprite2D" parent="CenterContainer/VBoxContainer"]
+position = Vector2(905, 59)
+scale = Vector2(3.40844, 3.40844)
+sprite_frames = SubResource("SpriteFrames_p5dgy")
+autoplay = "default"
+frame_progress = 0.829681
+
+[node name="Play" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "PLAY"
+
+[node name="Exit" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "EXIT"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

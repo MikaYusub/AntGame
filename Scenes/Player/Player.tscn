@@ -366,7 +366,6 @@ scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_c2kbg")
 animation = &"jetpack"
 autoplay = "jetpack"
-frame_progress = 0.0327137
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
 process_callback = 0

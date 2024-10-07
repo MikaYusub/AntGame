@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://fc7ugpbppkc6"]
+[gd_scene load_steps=11 format=3 uid="uid://fc7ugpbppkc6"]
 
 [ext_resource type="Script" path="res://Scenes/Level/Level.gd" id="1_8fc4u"]
 [ext_resource type="Texture2D" uid="uid://bbfy3o2ahge0u" path="res://Assets/Room_Builder_free_48x48.png" id="2_txdwy"]
@@ -753,6 +753,12 @@ physics_layer_0/collision_layer = 0
 physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_0g2d2")
 
+[sub_resource type="LabelSettings" id="LabelSettings_eewyl"]
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_3bddj"]
+font_size = 32
+
 [node name="Level" type="Node2D"]
 script = ExtResource("1_8fc4u")
 enemy_speed = 750.0
@@ -822,11 +828,52 @@ autostart = true
 
 [node name="Player" parent="." instance=ExtResource("3_k4fat")]
 position = Vector2(576, 328)
+max_health = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="GameOverMenu" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="CenterContainer" type="CenterContainer" parent="GameOverMenu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverMenu/CenterContainer"]
+layout_mode = 2
+
+[node name="GameOverLabel" type="Label" parent="GameOverMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "GAME OVER!"
+label_settings = SubResource("LabelSettings_eewyl")
+horizontal_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="GameOverMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "YOUR SCORE IS "
+label_settings = SubResource("LabelSettings_3bddj")
+horizontal_alignment = 1
+
+[node name="RestartButton" type="Button" parent="GameOverMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "RESTART"
+
+[node name="MainMenuButton" type="Button" parent="GameOverMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "MAIN MENU"
+
+[node name="QuitButton" type="Button" parent="GameOverMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "QUIT"
+
 [connection signal="screen_exited" from="Map/VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="pressed" from="Control/CanvasLayer/Button" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_enemy_timeout"]
+[connection signal="pressed" from="GameOverMenu/CenterContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="GameOverMenu/CenterContainer/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="GameOverMenu/CenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
