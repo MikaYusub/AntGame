@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://fc7ugpbppkc6"]
+[gd_scene load_steps=12 format=3 uid="uid://fc7ugpbppkc6"]
 
 [ext_resource type="Script" path="res://Scenes/Level/Level.gd" id="1_8fc4u"]
 [ext_resource type="Texture2D" uid="uid://bbfy3o2ahge0u" path="res://Assets/Room_Builder_free_48x48.png" id="2_txdwy"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dmtr5cnd86fxi" path="res://Assets/UI/ProgressBar3.png" id="4_0byvu"]
 [ext_resource type="Texture2D" uid="uid://bfujilad6pd2d" path="res://Assets/UI/ProgressBar1.png" id="5_xna6t"]
 [ext_resource type="Texture2D" uid="uid://bltct6k72eawk" path="res://Assets/UI/ProgressBar2.png" id="6_fw00k"]
+[ext_resource type="AudioStream" uid="uid://cp1gv7ugqhnw7" path="res://Assets/Music/Three Red Hearts - Go.ogg" id="7_wrgxo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0g2d2"]
 texture = ExtResource("2_txdwy")
@@ -809,14 +810,6 @@ texture_over = ExtResource("5_xna6t")
 texture_progress = ExtResource("6_fw00k")
 tint_progress = Color(1, 0.0862745, 0.0823529, 1)
 
-[node name="Button" type="Button" parent="Control/CanvasLayer"]
-offset_left = 272.0
-offset_top = 592.0
-offset_right = 408.0
-offset_bottom = 632.0
-text = "Spawn_enemy
-"
-
 [node name="Score" type="Label" parent="Control/CanvasLayer"]
 offset_right = 40.0
 offset_bottom = 23.0
@@ -870,8 +863,11 @@ text = "MAIN MENU"
 layout_mode = 2
 text = "QUIT"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_wrgxo")
+autoplay = true
+
 [connection signal="screen_exited" from="Map/VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
-[connection signal="pressed" from="Control/CanvasLayer/Button" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_enemy_timeout"]
 [connection signal="pressed" from="GameOverMenu/CenterContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="GameOverMenu/CenterContainer/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

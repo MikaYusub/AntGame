@@ -10,18 +10,16 @@ enum {
 
 signal health_changed(new_health)
 
-var state = MOVE
-
 @export var max_health = 120
-var health
-
 @export var max_stamina = 120
-var stamina
-
-var run_speed = 1
-@onready var anim: AnimatedSprite2D = $AnimatedSprite2D
-
 @export var SPEED := 300.0
+
+var health
+var stamina
+var state = MOVE
+var run_speed = 1
+
+@onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 
 
 func _ready():

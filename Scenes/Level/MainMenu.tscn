@@ -61,7 +61,7 @@ position = Vector2(905, 59)
 scale = Vector2(3.40844, 3.40844)
 sprite_frames = SubResource("SpriteFrames_p5dgy")
 autoplay = "default"
-frame_progress = 0.829681
+frame_progress = 0.797086
 
 [node name="Play" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2

@@ -59,7 +59,6 @@ func _on_player_health_changed(new_health):
 
 
 func _on_player_stamina_changed(new_stamina):
-	print("Stamina changed to: " + str(new_stamina))
 	staminaBar.value = new_stamina
 
 

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cp1gv7ugqhnw7"
+path="res://.godot/imported/Three Red Hearts - Go.ogg-2c85fab7e8e521641384c9b51e9d3be6.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Music/Three Red Hearts - Go.ogg"
+dest_files=["res://.godot/imported/Three Red Hearts - Go.ogg-2c85fab7e8e521641384c9b51e9d3be6.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
