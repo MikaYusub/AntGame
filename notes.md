@@ -7,8 +7,7 @@
 - [x] Stamina usage and regen
 - [x] Add audio effect to vacuum cleaner
 - [x] Add background music
-
-- [ ] ESC during the game
+- [X] ESC during the game
 - [ ] Sound settings
 - [ ] Добавить описания и отличие сложностей
 - [ ] Add consumable sugar (hp regen)
