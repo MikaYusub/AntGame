@@ -1,10 +1,13 @@
 extends Node2D
 
-@onready var healthBar = $Control/CanvasLayer/HealthBar
-@onready var staminaBar = $Control/CanvasLayer/StaminaBar
+class_name Level
+
+
+@onready var healthBar = $UI/CanvasLayer/HealthBar
+@onready var staminaBar = $UI/CanvasLayer/StaminaBar
 @onready var player = $Player
 @onready var enemy_scene = load("res://Scenes/Enemy/enemy.tscn")
-@onready var time = $Control/CanvasLayer/Score
+@onready var time = $UI/CanvasLayer/Score
 @onready var timer = $Timer
 
 @onready var gameOverMenu = $GameOverMenu

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://fc7ugpbppkc6"]
+[gd_scene load_steps=13 format=3 uid="uid://fc7ugpbppkc6"]
 
 [ext_resource type="Script" path="res://Scenes/Level/Level.gd" id="1_8fc4u"]
 [ext_resource type="Texture2D" uid="uid://bbfy3o2ahge0u" path="res://Assets/Room_Builder_free_48x48.png" id="2_txdwy"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bfujilad6pd2d" path="res://Assets/UI/ProgressBar1.png" id="5_xna6t"]
 [ext_resource type="Texture2D" uid="uid://bltct6k72eawk" path="res://Assets/UI/ProgressBar2.png" id="6_fw00k"]
 [ext_resource type="AudioStream" uid="uid://cp1gv7ugqhnw7" path="res://Assets/Music/Three Red Hearts - Go.ogg" id="7_wrgxo"]
+[ext_resource type="PackedScene" uid="uid://ivfrk7hehc0a" path="res://Scenes/Level/PauseMenu.tscn" id="8_r7w2b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0g2d2"]
 texture = ExtResource("2_txdwy")
@@ -271,6 +272,7 @@ font_size = 64
 font_size = 32
 
 [node name="Level" type="Node2D"]
+process_mode = 1
 script = ExtResource("1_8fc4u")
 
 [node name="Map" type="Node2D" parent="."]
@@ -283,7 +285,7 @@ layer_0/tile_data = PackedInt32Array(0, 720896, 7, 65536, 720896, 8, 1, 786432, 
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Map"]
 
-[node name="Control" type="Control" parent="."]
+[node name="UI" type="Control" parent="."]
 layout_direction = 1
 layout_mode = 3
 anchors_preset = 15
@@ -292,9 +294,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Control"]
+[node name="CanvasLayer" type="CanvasLayer" parent="UI"]
 
-[node name="StaminaBar" type="TextureProgressBar" parent="Control/CanvasLayer"]
+[node name="StaminaBar" type="TextureProgressBar" parent="UI/CanvasLayer"]
 offset_top = 592.0
 offset_right = 91.0
 offset_bottom = 616.0
@@ -305,7 +307,7 @@ texture_over = ExtResource("5_xna6t")
 texture_progress = ExtResource("6_fw00k")
 tint_progress = Color(1, 0.960784, 0.0823529, 1)
 
-[node name="HealthBar" type="TextureProgressBar" parent="Control/CanvasLayer"]
+[node name="HealthBar" type="TextureProgressBar" parent="UI/CanvasLayer"]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -319,11 +321,24 @@ texture_over = ExtResource("5_xna6t")
 texture_progress = ExtResource("6_fw00k")
 tint_progress = Color(1, 0.0862745, 0.0823529, 1)
 
-[node name="Score" type="Label" parent="Control/CanvasLayer"]
+[node name="Score" type="Label" parent="UI/CanvasLayer"]
 offset_right = 40.0
 offset_bottom = 23.0
 theme_override_font_sizes/font_size = 32
 text = "Score: 0"
+
+[node name="PauseMenu" parent="UI/CanvasLayer" instance=ExtResource("8_r7w2b")]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 64.0
+offset_top = 60.0
+offset_right = 64.0
+offset_bottom = 60.0
+scale = Vector2(3, 3)
 
 [node name="Timer" type="Timer" parent="."]
 process_callback = 0
@@ -331,10 +346,6 @@ autostart = true
 
 [node name="Player" parent="." instance=ExtResource("3_k4fat")]
 position = Vector2(576, 328)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="GameOverMenu" type="CanvasLayer" parent="."]
 visible = false
