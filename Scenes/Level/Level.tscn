@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://fc7ugpbppkc6"]
+[gd_scene load_steps=14 format=3 uid="uid://fc7ugpbppkc6"]
 
 [ext_resource type="Script" path="res://Scenes/Level/Level.gd" id="1_8fc4u"]
 [ext_resource type="Texture2D" uid="uid://bbfy3o2ahge0u" path="res://Assets/Room_Builder_free_48x48.png" id="2_txdwy"]
@@ -6,8 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://dmtr5cnd86fxi" path="res://Assets/UI/ProgressBar3.png" id="4_0byvu"]
 [ext_resource type="Texture2D" uid="uid://bfujilad6pd2d" path="res://Assets/UI/ProgressBar1.png" id="5_xna6t"]
 [ext_resource type="Texture2D" uid="uid://bltct6k72eawk" path="res://Assets/UI/ProgressBar2.png" id="6_fw00k"]
+[ext_resource type="PackedScene" uid="uid://h38iisbba4pl" path="res://Scenes/UI/settings.tscn" id="7_d60fn"]
 [ext_resource type="AudioStream" uid="uid://cp1gv7ugqhnw7" path="res://Assets/Music/Three Red Hearts - Go.ogg" id="7_wrgxo"]
-[ext_resource type="PackedScene" uid="uid://ivfrk7hehc0a" path="res://Scenes/Level/PauseMenu.tscn" id="8_r7w2b"]
+[ext_resource type="PackedScene" uid="uid://ivfrk7hehc0a" path="res://Scenes/Menus/PauseMenu.tscn" id="8_r7w2b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0g2d2"]
 texture = ExtResource("2_txdwy")
@@ -275,6 +276,25 @@ font_size = 32
 process_mode = 1
 script = ExtResource("1_8fc4u")
 
+[node name="SettingsMenu" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="SettingsMenu" instance=ExtResource("8_r7w2b")]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 64.0
+offset_top = 60.0
+offset_right = 64.0
+offset_bottom = 60.0
+scale = Vector2(3, 3)
+
+[node name="Settings" parent="SettingsMenu" instance=ExtResource("7_d60fn")]
+unique_name_in_owner = true
+visible = false
+
 [node name="Map" type="Node2D" parent="."]
 
 [node name="TileMap" type="TileMap" parent="Map"]
@@ -327,19 +347,6 @@ offset_bottom = 23.0
 theme_override_font_sizes/font_size = 32
 text = "Score: 0"
 
-[node name="PauseMenu" parent="UI/CanvasLayer" instance=ExtResource("8_r7w2b")]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 64.0
-offset_top = 60.0
-offset_right = 64.0
-offset_bottom = 60.0
-scale = Vector2(3, 3)
-
 [node name="Timer" type="Timer" parent="."]
 process_callback = 0
 autostart = true
@@ -387,6 +394,7 @@ text = "QUIT"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_wrgxo")
 autoplay = true
+bus = &"Music"
 
 [connection signal="screen_exited" from="Map/VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_enemy_timeout"]

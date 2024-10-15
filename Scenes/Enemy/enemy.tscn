@@ -215,5 +215,6 @@ shape = SubResource("RectangleShape2D_bp5rk")
 [node name="Audio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_kbvmh")
 autoplay = true
+bus = &"SFX"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

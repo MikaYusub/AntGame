@@ -1,0 +1,286 @@
+[gd_scene load_steps=5 format=3 uid="uid://h38iisbba4pl"]
+
+[ext_resource type="Script" path="res://Scenes/UI/video.gd" id="1_3b166"]
+[ext_resource type="Script" path="res://Scenes/UI/settings.gd" id="1_rwtcq"]
+[ext_resource type="PackedScene" uid="uid://d1o6al2bvsvt1" path="res://Scenes/UI/action_button.tscn" id="2_3vgtr"]
+[ext_resource type="Script" path="res://Scenes/UI/audio.gd" id="2_lbttn"]
+
+[node name="Settings" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rwtcq")
+metadata/_edit_use_anchors_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Settings" type="TabContainer" parent="CanvasLayer"]
+visible = false
+anchors_preset = -1
+anchor_left = 0.165
+anchor_top = 0.165
+anchor_right = 0.825
+anchor_bottom = 0.825
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 1
+
+[node name="Video" type="TabBar" parent="CanvasLayer/Settings"]
+visible = false
+layout_mode = 2
+script = ExtResource("1_3b166")
+metadata/_tab_index = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Settings/Video"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Settings/Video/HBoxContainer"]
+layout_mode = 2
+
+[node name="Fullscreen" type="Label" parent="CanvasLayer/Settings/Video/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Fullscreen"
+
+[node name="Borderless" type="Label" parent="CanvasLayer/Settings/Video/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Borderless"
+
+[node name="Vsync" type="Label" parent="CanvasLayer/Settings/Video/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Vsync"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/Settings/Video/HBoxContainer"]
+layout_mode = 2
+
+[node name="Fullscreen" type="CheckBox" parent="CanvasLayer/Settings/Video/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Borderless" type="CheckBox" parent="CanvasLayer/Settings/Video/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Vsync" type="OptionButton" parent="CanvasLayer/Settings/Video/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 1
+item_count = 4
+popup/item_0/text = "Disabled"
+popup/item_1/text = "Enabled"
+popup/item_1/id = 1
+popup/item_2/text = "Adaptive"
+popup/item_2/id = 3
+popup/item_3/text = "Mailbox"
+popup/item_3/id = 2
+
+[node name="BackButton" type="Button" parent="CanvasLayer/Settings/Video"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -56.0
+offset_right = 56.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Back"
+
+[node name="Controls" type="TabBar" parent="CanvasLayer/Settings"]
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Settings/Controls"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.5
+offset_top = -52.0
+offset_right = 24.5
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Settings/Controls/HBoxContainer"]
+layout_mode = 2
+
+[node name="Up" type="Label" parent="CanvasLayer/Settings/Controls/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Up"
+
+[node name="Left" type="Label" parent="CanvasLayer/Settings/Controls/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Left"
+
+[node name="Down" type="Label" parent="CanvasLayer/Settings/Controls/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Down"
+
+[node name="Right" type="Label" parent="CanvasLayer/Settings/Controls/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Right"
+
+[node name="Sprint" type="Label" parent="CanvasLayer/Settings/Controls/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Sprint"
+
+[node name="Pause" type="Label" parent="CanvasLayer/Settings/Controls/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Pause"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/Settings/Controls/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="UpButton" parent="CanvasLayer/Settings/Controls/HBoxContainer/VBoxContainer2" instance=ExtResource("2_3vgtr")]
+layout_mode = 2
+size_flags_vertical = 7
+action = "up"
+
+[node name="LeftButton" parent="CanvasLayer/Settings/Controls/HBoxContainer/VBoxContainer2" instance=ExtResource("2_3vgtr")]
+layout_mode = 2
+size_flags_vertical = 7
+action = "left"
+
+[node name="DownButton" parent="CanvasLayer/Settings/Controls/HBoxContainer/VBoxContainer2" instance=ExtResource("2_3vgtr")]
+layout_mode = 2
+size_flags_vertical = 7
+action = "down"
+
+[node name="RightButton" parent="CanvasLayer/Settings/Controls/HBoxContainer/VBoxContainer2" instance=ExtResource("2_3vgtr")]
+layout_mode = 2
+size_flags_vertical = 7
+action = "right"
+
+[node name="SprintButton" parent="CanvasLayer/Settings/Controls/HBoxContainer/VBoxContainer2" instance=ExtResource("2_3vgtr")]
+layout_mode = 2
+size_flags_vertical = 7
+action = "sprint"
+
+[node name="PauseButton" parent="CanvasLayer/Settings/Controls/HBoxContainer/VBoxContainer2" instance=ExtResource("2_3vgtr")]
+layout_mode = 2
+size_flags_vertical = 7
+action = "pause"
+
+[node name="BackButton" type="Button" parent="CanvasLayer/Settings/Controls"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -56.0
+offset_right = 56.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Back"
+
+[node name="Audio" type="TabBar" parent="CanvasLayer/Settings"]
+visible = false
+layout_mode = 2
+script = ExtResource("2_lbttn")
+metadata/_tab_index = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Settings/Audio"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -29.5
+offset_top = -38.5
+offset_right = 29.5
+offset_bottom = 38.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Settings/Audio/HBoxContainer"]
+layout_mode = 2
+
+[node name="Master" type="Label" parent="CanvasLayer/Settings/Audio/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Master"
+
+[node name="Music" type="Label" parent="CanvasLayer/Settings/Audio/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Music"
+
+[node name="SFX" type="Label" parent="CanvasLayer/Settings/Audio/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "SFX"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/Settings/Audio/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Master" type="HSlider" parent="CanvasLayer/Settings/Audio/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+max_value = 1.0
+step = 0.05
+
+[node name="Music" type="HSlider" parent="CanvasLayer/Settings/Audio/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+max_value = 1.0
+step = 0.05
+
+[node name="SFX" type="HSlider" parent="CanvasLayer/Settings/Audio/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+max_value = 1.0
+step = 0.05
+
+[node name="BackButton" type="Button" parent="CanvasLayer/Settings/Audio"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -56.0
+offset_right = 56.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Back"
+
+[connection signal="toggled" from="CanvasLayer/Settings/Video/HBoxContainer/VBoxContainer2/Fullscreen" to="CanvasLayer/Settings/Video" method="_on_fullscreen_toggled"]
+[connection signal="toggled" from="CanvasLayer/Settings/Video/HBoxContainer/VBoxContainer2/Borderless" to="CanvasLayer/Settings/Video" method="_on_borderless_toggled"]
+[connection signal="item_selected" from="CanvasLayer/Settings/Video/HBoxContainer/VBoxContainer2/Vsync" to="CanvasLayer/Settings/Video" method="_on_vsync_item_selected"]
+[connection signal="pressed" from="CanvasLayer/Settings/Video/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Settings/Controls/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="value_changed" from="CanvasLayer/Settings/Audio/HBoxContainer/VBoxContainer2/Master" to="CanvasLayer/Settings/Audio" method="_on_master_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/Settings/Audio/HBoxContainer/VBoxContainer2/Music" to="CanvasLayer/Settings/Audio" method="_on_music_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/Settings/Audio/HBoxContainer/VBoxContainer2/SFX" to="CanvasLayer/Settings/Audio" method="_on_sfx_value_changed"]
+[connection signal="pressed" from="CanvasLayer/Settings/Audio/BackButton" to="." method="_on_back_button_pressed"]

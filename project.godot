@@ -11,14 +11,16 @@ config_version=5
 [application]
 
 config/name="AntGame"
-run/main_scene="res://Scenes/Level/MainMenu.tscn"
+run/main_scene="res://Scenes/Menus/MainMenu.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
 
-Signals="*res://signals.gd"
-SharedVariables="*res://shared_variables.gd"
+Signals="*res://Scripts/signals.gd"
+SharedVariables="*res://Scripts/shared_variables.gd"
+Persistence="*res://Scripts/Persistence.gd"
+SettingsManager="*res://Scripts/SettingsManager.gd"
 
 [display]
 

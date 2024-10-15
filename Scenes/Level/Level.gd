@@ -73,14 +73,12 @@ func _on_enemy_timeout():
 	add_child(enemy_instance)
 	enemy_instance.spawn_enemy()
 
-
+# Game Over Menu TODO refactor to separate script
 func _on_restart_button_pressed():
 	get_tree().reload_current_scene()
-
 
 func _on_quit_button_pressed():
 	get_tree().quit()
 
-
 func _on_main_menu_button_pressed():
-	get_tree().change_scene_to_file("res://Scenes/Level/MainMenu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Level/MainMenu.tscn")	
