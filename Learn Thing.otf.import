@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://b0oonhnahek8c"
-path="res://.godot/imported/Learn Thing.otf-dbfd88e9380b4c4969da2a3d729ab5d8.fontdata"
+path="res://.godot/imported/Learn Thing.otf-816f3346f9ac9c19a8ee6e083feadbc9.fontdata"
 
 [deps]
 
-source_file="res://Scenes/UI/Learn Thing.otf"
-dest_files=["res://.godot/imported/Learn Thing.otf-dbfd88e9380b4c4969da2a3d729ab5d8.fontdata"]
+source_file="res://Learn Thing.otf"
+dest_files=["res://.godot/imported/Learn Thing.otf-816f3346f9ac9c19a8ee6e083feadbc9.fontdata"]
 
 [params]
 

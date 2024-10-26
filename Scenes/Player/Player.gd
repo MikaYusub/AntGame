@@ -20,7 +20,7 @@ var state = MOVE
 var run_speed = 1
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
-
+@onready var damage_numbers_origin = $DamageNumbersOrigin
 
 func _ready():
 	Signals.connect("enemy_attack", Callable(self, "_on_damage_received"))
@@ -106,7 +106,7 @@ func _on_damage_received(enemy_damage):
 		return
 
 	health -= enemy_damage
-	
+	DamageNumbers.display_damage(enemy_damage, damage_numbers_origin.global_position)
 	if health <= 0:
 		health = 0
 		state = DEATH

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://m6nhdkknehor"]
 
 [ext_resource type="Script" path="res://Scenes/Menus/MainMenu.gd" id="1_gymm1"]
-[ext_resource type="FontFile" uid="uid://b0oonhnahek8c" path="res://Scenes/UI/Learn Thing.otf" id="2_1ikox"]
+[ext_resource type="FontFile" uid="uid://b0oonhnahek8c" path="res://Learn Thing.otf" id="2_1ikox"]
 [ext_resource type="Texture2D" uid="uid://bo0nv7hhvku48" path="res://Assets/Player/antAnimation.png" id="2_wkv31"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lg6d4"]

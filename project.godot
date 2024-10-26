@@ -21,10 +21,15 @@ Signals="*res://Scripts/signals.gd"
 SharedVariables="*res://Scripts/shared_variables.gd"
 Persistence="*res://Scripts/Persistence.gd"
 SettingsManager="*res://Scripts/SettingsManager.gd"
+DamageNumbers="*res://Scripts/DamageNumbers.gd"
 
 [display]
 
 window/stretch/mode="viewport"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/AS2P/plugin.cfg")
 
 [input]
 
@@ -64,11 +69,19 @@ pause={
 ]
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://addons/maaacks_options_menus/base/translations/menus_translations.en.translation", "res://addons/maaacks_options_menus/base/translations/menus_translations.fr.translation")
+
 [layer_names]
 
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Enemy"
 2d_physics/layer_3="Consumables"
+
+[maaacks_options_menus]
+
+disable_plugin_dialogues=true
 
 [rendering]
 
