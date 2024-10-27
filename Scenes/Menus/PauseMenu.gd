@@ -38,7 +38,6 @@ func _on_resume_pressed() -> void:
 
 func _on_options_pressed() -> void:
     SettingsManager.open_settings_menu(self)  # Open SettingsMenu via singleton
-    print("PauseMenu: Options pressed, opening settings.")
 
 func _on_settings_closed() -> void:
     _is_paused = true  # Ensure the game stays paused
@@ -46,5 +45,4 @@ func _on_settings_closed() -> void:
     visible = true  # Show the PauseMenu when settings are closed
 
 func _on_settings_opened() -> void:
-    print("PauseMenu: settings_opened signal received.")
     visible = false  # Hide the PauseMenu when settings are opened

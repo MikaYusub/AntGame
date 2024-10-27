@@ -26,9 +26,7 @@ func _on_pressed() -> void:
         remapping_in_progress = true
         set_process_unhandled_input(true)
         text = "Press any key..."
-        is_listening = true
-    else:
-        print("Another key remap is already in progress.")
+        is_listening = true    
 
 
 func _unhandled_key_input(event: InputEvent) -> void:

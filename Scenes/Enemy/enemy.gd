@@ -12,6 +12,8 @@ var damage: float = 10
 
 var shown_on_vp = false
 
+var spawn_side: int = -1  # -1 indicates not set; 0 = top, 1 = right, 2 = bottom, 3 = left
+
 func _ready():
 	randomize()
 
@@ -39,6 +41,7 @@ func spawn_enemy():
 	choose_random_points(get_camera_rect())
 	position = start_point
 	rotation = start_point.angle_to_point(end_point) - PI / 2
+	adjust_speed_based_on_side()
 
 func choose_random_points(play_area: Rect2):
 	start_point = get_random_point_outside_viewport(play_area)
@@ -50,6 +53,7 @@ func choose_random_points(play_area: Rect2):
 
 func get_random_point_outside_viewport(play_area: Rect2) -> Vector2:
 	var rand_choice = randi() % 4 # 0 = top, 1 = right, 2 = bottom, 3 = left
+	spawn_side = rand_choice  # Store the side for later use
 	var margin = 100
 
 	match rand_choice:
@@ -79,3 +83,8 @@ func rand_range(min_val: float, max_val: float) -> float:
 
 func _on_area_2d_body_entered(_body: Node2D):
 	Signals.emit_signal("enemy_attack", damage)
+
+func adjust_speed_based_on_side():
+	if spawn_side == 0 or spawn_side == 2:
+		# Enemy is coming from top or bottom
+		speed *= SharedVariables.enemy_speed_adjust_ratio	

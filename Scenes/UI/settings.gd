@@ -1,7 +1,6 @@
 extends Control
 
 func _on_back_button_pressed() -> void:
-    print("SettingsMenu: Back button pressed.")
     SettingsManager.close_settings_menu()  # Close SettingsMenu via singleton
 
 func _unhandled_input(event: InputEvent) -> void:

@@ -17,7 +17,6 @@ func _ready():
         settings_menu = load(settings_scene_path).instantiate()
         get_tree().root.add_child(settings_menu)
         settings_menu.hide()
-    print("SettingsManager ready. Settings menu loaded and hidden.")
 
 # Helper function to recursively set visibility of child nodes
 func set_visibility_recursive(node: Node, visibility: bool) -> void:
@@ -28,7 +27,6 @@ func set_visibility_recursive(node: Node, visibility: bool) -> void:
 
 # Function to open the SettingsMenu
 func open_settings_menu(menu):
-    print("SettingsManager: Opening settings menu from ", menu.name)
     if settings_menu:
         if settings_menu.get_parent() == null:
             get_tree().root.add_child(settings_menu)  # Ensure it's added to the root if it got unloaded
@@ -44,7 +42,6 @@ func open_settings_menu(menu):
 
 # Function to close the SettingsMenu
 func close_settings_menu():
-    print("SettingsManager: Closing settings menu.")
     if settings_menu:
         # Hide the SettingsMenu and its children
         set_visibility_recursive(settings_menu, false)

@@ -13,10 +13,16 @@ class_name Level
 @onready var gameOverMenu = $GameOverMenu
 @onready var gameOverScoreLabel = $GameOverMenu/CenterContainer/VBoxContainer/ScoreLabel
 
-var enemy_speed: float = SharedVariables.enemy_speed
+var enemy_speed: float
 var enemy_acceleration: float = SharedVariables.enemy_acceleration
 var enemy_scale_addition: float = SharedVariables.enemy_scale_addition
 var enemy_timer_decay: float = SharedVariables.enemy_timer_decay
+
+
+var initial_enemy_speed = SharedVariables.enemy_speed
+var initial_enemy_scale = 3
+@onready var initial_wait_time = timer.wait_time
+var min_wait_time = 0.5  # Set a minimum spawn rate to prevent spawning too fast
 
 @export var enemy_scale: float = 3
 
@@ -34,15 +40,18 @@ func _ready():
 	staminaBar.max_value = player.max_stamina
 	staminaBar.value = staminaBar.max_value
 
-func _process(delta):
+func _process(_delta):
 	if healthBar.value > 0:
 		score = (Time.get_ticks_msec() - start_time) / 1000.0;
 
 	time.text = "Score: " + str(score)
 
-	enemy_speed += enemy_acceleration * delta
-	enemy_scale += enemy_scale_addition * delta
-	timer.wait_time -= enemy_timer_decay * delta
+    # Update enemy attributes based on elapsed time
+	enemy_speed = initial_enemy_speed + enemy_acceleration * score
+	enemy_scale = initial_enemy_scale + enemy_scale_addition * score
+
+	# Update timer, ensuring it doesn't go below the minimum wait time
+	timer.wait_time = max(min_wait_time, initial_wait_time - enemy_timer_decay * score)
 
 #test spawn enemy button for development
 func _on_button_pressed():

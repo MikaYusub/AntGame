@@ -5,7 +5,6 @@ func _ready():
     # Connect to the SettingsManager signals
     SettingsManager.connect("settings_closed", Callable(self, "_on_settings_closed"))
     SettingsManager.connect("settings_opened", Callable(self, "_on_settings_opened"))
-    print("MainMenu ready.")
 
 func _on_exit_pressed():
     get_tree().quit()
@@ -41,12 +40,9 @@ func _on_hard_button_pressed():
 
 func _on_options_pressed() -> void:
     SettingsManager.open_settings_menu(self)  # Open SettingsMenu via singleton
-    print("MainMenu: Options pressed, opening settings.")
 
 func _on_settings_closed() -> void:
-    print("MainMenu: settings_closed signal received.")
     visible = true  # Show the MainMenu when settings are closed
 
 func _on_settings_opened() -> void:
-    print("MainMenu: settings_opened signal received.")
     visible = false  # Hide the MainMenu when settings are opened
